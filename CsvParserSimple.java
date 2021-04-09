@@ -1,3 +1,4 @@
+package Load;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -5,6 +6,7 @@ import java.net.URL;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -22,23 +24,79 @@ public class CsvParserSimple {
     public static void main(String[] args) throws Exception {
 
         // loads CSV file from the resource folder.
-        URL resource = CsvParserSimple.class.getClassLoader().getResource("randomdata.csv");
+        URL resource = CsvParserSimple.class.getClassLoader().getResource("TeamProjectRandomData - 10People.csv");
         File file = Paths.get(resource.toURI()).toFile();
 
         CsvParserSimple obj = new CsvParserSimple();
         List<String[]> result = obj.readFile(file, 1);
 
         int listIndex = 0;
-        for (String[] arrays : result) {
-            System.out.println("\nString[" + listIndex++ + "] : " + Arrays.toString(arrays));
+        int locationIndex = 0;
+        int typeIndex = 0;
+        int totalTypeIndex = 0;
+        int totalLocationIndex = 0;
+        LinkedList<String> one_inst_locations = new LinkedList<String>();
+        LinkedList<String> total_locations = new LinkedList<String>();
+        LinkedList<String> one_inst_type = new LinkedList<String>();
+        LinkedList<String> total_type = new LinkedList<String>();
+        //2d array: Result contains numerous "arrays" 
+        for (String[] arrays : result) { //arrays = row. result = file 
+            System.out.println("\nString[" + listIndex++ + "] : " + Arrays.toString(arrays)); 
 
             int index = 0;
-            for (String array : arrays) {
-                System.out.println(index++ + " : " + array);
+            for (String item : arrays) {//arrays = row. array = item per column 
+            	if(index == 3) {
+            		if(!(one_inst_type.contains(item))){ //existing locations in file 
+            			one_inst_type.add(typeIndex, item);
+                		typeIndex++;
+            		}
+            		total_type.add(totalTypeIndex, item);
+            		totalTypeIndex++;
+            	}
+            	if(index == 5) {
+            		if(!(one_inst_locations.contains(item))){ //existing locations in file 
+            			one_inst_locations.add(locationIndex, item);
+                		locationIndex++;
+            		}
+            		total_locations.add(totalLocationIndex, item);
+            		totalLocationIndex++;
+            	}
+                System.out.println(index++ + " : " + item); //column : column data 
             }
 
         }
+        System.out.println("\n------------------------------------\nLocations, instances:\n------------------------------------" );
+        for(int i = 0; i < one_inst_locations.size(); i++) {
+        	System.out.println(one_inst_locations.get(i) + ", " + getCount(total_locations, one_inst_locations.get(i)));
+        }
+        System.out.println("\n------------------------------------\nType, instances:\n------------------------------------" );
+        for(int i = 0; i < one_inst_type.size(); i++) {
+        	System.out.println(one_inst_type.get(i) + ", " + getCount(total_type, one_inst_type.get(i)));
+        }
+        
+//        System.out.println();
+//        for(int i = 0; i < total_locations.size(); i++) {
+//        	System.out.print(total_locations.get(i) + ",  ");
+//        }
+//        System.out.println();
+//        int count = getCount(total_locations, "Israel");
+//        System.out.println(count);
 
+    }
+    
+    public LinkedList<String> total(LinkedList<String> total){
+    	LinkedList<String> totalInstance = new LinkedList<String>();
+    	return totalInstance;
+    }
+    
+    public static int getCount(LinkedList<String> list, String inst) {
+    	    int count = 0;
+    	    for(int i = 0; i < list.size(); i++) {
+    	    	if((list.get(i).equals(inst))){ 
+        			count++;
+        		}
+    	    }
+    	    return count;
     }
 
     public List<String[]> readFile(File csvFile) throws Exception {
