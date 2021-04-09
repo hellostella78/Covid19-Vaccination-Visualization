@@ -25,6 +25,8 @@ public class VaccineMain {
 		frame.add(tabPane);
 		frame.setSize(400,400);
 		frame.setVisible(true);
+
+		VaccineController control = new VaccineController(about, addData, loadData);
 	}
 
 }
