@@ -2,10 +2,17 @@ import javax.swing.*;
 
 public class About extends JPanel {
 
-	private JLabel aboutLabel;
+	private JLabel aboutLabel1, aboutLabel2, aboutLabel3, aboutLabel4;
 	
 	public About() {
-		aboutLabel = new JLabel("Our names here");
-		add(aboutLabel);
+		add(new JLabel("Shaira Alam"));
+	
+		add(new JLabel("Sihyeon Kim"));
+
+		add(new JLabel("Zuy Pham"));
+
+		add(new JLabel("Aira San Agustin"));
+
+		
 	}
 }
