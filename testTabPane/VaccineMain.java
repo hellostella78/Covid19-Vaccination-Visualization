@@ -9,15 +9,17 @@ public class VaccineMain {
 		frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
 
 		// create panels
-		About about = new About();
+		Home home = new Home();
 		AddData addData = new AddData();
 		LoadData loadData = new LoadData();
+		About about = new About();
 
 		// add all panels to TabPane
 		JTabbedPane tabPane = new JTabbedPane();
-		tabPane.addTab("About", about);
+		tabPane.addTab("Home", home);
 		tabPane.addTab("Add Data", addData);
 		tabPane.addTab("Load Data", loadData);
+		tabPane.addTab("About", about);
 
 		// set size of frame
 		tabPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
@@ -25,7 +27,7 @@ public class VaccineMain {
 		frame.add(tabPane);
 		frame.setSize(400,400);
 		frame.setVisible(true);
-
+		
 		VaccineController control = new VaccineController(about, addData, loadData);
 	}
 
