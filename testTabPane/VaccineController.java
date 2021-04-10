@@ -7,17 +7,12 @@ import javax.swing.JTabbedPane;
 public class VaccineController {
 	
 	//reference to view inside controller
-	About about;
-	AddData addData;
-	LoadData loadData;
+	private VaccineViewBundler viewBundler;
 	
 	ArrayList<VaccineRecord> vaxRecordList = new ArrayList<VaccineRecord>();
 			
-	public VaccineController(About about, AddData addData, LoadData loadData)
+	public VaccineController()
 	{
-		this.about = about;
-		this.addData = addData;
-		this.loadData = loadData;
 	}
 	
 	//method to add new record
@@ -26,7 +21,7 @@ public class VaccineController {
 		//add to array list of persistent vaccine records
 		vaxRecordList.add(newRecord);
 		
-		//change view i.e. about.update();		
+		//change view i.e. about.update();	
 	}
 	
 	//method to save record
@@ -35,6 +30,10 @@ public class VaccineController {
 	//method to load record
 	public void LoadData() {
 //		CsvParserSimple parseCSV = new CsvParserSimple();
+	}
+
+	public void SetBundler(VaccineViewBundler viewBundler) {
+		this.viewBundler = viewBundler;
 	}
 	
 	//method to visualize record

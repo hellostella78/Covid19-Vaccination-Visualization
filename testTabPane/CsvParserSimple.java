@@ -20,25 +20,24 @@ public class CsvParserSimple {
     private boolean isMultiLine = false;
     private String pendingField = "";
     private String[] pendingFieldLine = new String[]{};
-
+    
+    LinkedList<String> one_inst_locations = new LinkedList<String>();
+    LinkedList<String> total_locations = new LinkedList<String>();
+    LinkedList<String> one_inst_type = new LinkedList<String>();
+    LinkedList<String> total_type = new LinkedList<String>();
+    
     public CsvParserSimple(File csvFile) throws Exception{
-
-        // loads CSV file from the resource folder.
-        URL resource = CsvParserSimple.class.getClassLoader().getResource(csvFile);
-        File file = Paths.get(resource.toURI()).toFile();
-
-        CsvParserSimple obj = new CsvParserSimple(csvFile);
-        List<String[]> result = obj.readFile(file, 1);
+        List<String[]> result = readFile(csvFile, 1);
 
         int listIndex = 0;
         int locationIndex = 0;
         int typeIndex = 0;
         int totalTypeIndex = 0;
         int totalLocationIndex = 0;
-        LinkedList<String> one_inst_locations = new LinkedList<String>();
-        LinkedList<String> total_locations = new LinkedList<String>();
-        LinkedList<String> one_inst_type = new LinkedList<String>();
-        LinkedList<String> total_type = new LinkedList<String>();
+//        LinkedList<String> one_inst_locations = new LinkedList<String>();
+//        LinkedList<String> total_locations = new LinkedList<String>();
+//        LinkedList<String> one_inst_type = new LinkedList<String>();
+//        LinkedList<String> total_type = new LinkedList<String>();
         //2d array: Result contains numerous "arrays" 
         for (String[] arrays : result) { //arrays = row. result = file 
             System.out.println("\nString[" + listIndex++ + "] : " + Arrays.toString(arrays)); 
@@ -82,6 +81,22 @@ public class CsvParserSimple {
 //        int count = getCount(total_locations, "Israel");
 //        System.out.println(count);
 
+    }
+    
+    public LinkedList<String> getLocationsInst(){
+    	return one_inst_locations;
+    }
+    
+    public LinkedList<String> getLocationsTotal(){
+    	return total_locations;
+    }
+    
+    public LinkedList<String> getTypeInst(){
+    	return one_inst_type;
+    }
+    
+    public LinkedList<String> getTypeTotal(){
+    	return total_type;
     }
     
     public LinkedList<String> total(LinkedList<String> total){
