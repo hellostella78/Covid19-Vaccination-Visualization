@@ -46,4 +46,9 @@ public class VaccineController {
 	
 	//method to visualize record
 
+	//method to get record list to populate table
+	public ArrayList<VaccineRecord> getRecordList() {
+		return vaxRecordList;
+	}
+	
 }

@@ -12,6 +12,8 @@ import java.util.stream.Stream;
 
 public class CsvParserSimple {
 
+//	public VaccineViewBundler viewBundler;
+
     private static final char DEFAULT_SEPARATOR = ',';
     private static final char DOUBLE_QUOTES = '"';
     private static final char DEFAULT_QUOTE_CHAR = DOUBLE_QUOTES;
@@ -41,8 +43,10 @@ public class CsvParserSimple {
         //2d array: Result contains numerous "arrays" 
         for (String[] arrays : result) { //arrays = row. result = file 
             System.out.println("\nString[" + listIndex++ + "] : " + Arrays.toString(arrays)); 
-
-            int index = 0;
+            
+//            VaccineRecord newRecord = new VaccineRecord(arrays[0], arrays[1], arrays[2], arrays[3], arrays[4], arrays[5]);	
+//            viewBundler.getController().addNewRecord(newRecord);
+           int index = 0;
             for (String item : arrays) {//arrays = row. array = item per column 
             	if(index == 3) {
             		if(!(one_inst_type.contains(item))){ //existing locations in file 
@@ -62,7 +66,6 @@ public class CsvParserSimple {
             	}
                 System.out.println(index++ + " : " + item); //column : column data 
             }
-
         }
         System.out.println("\n------------------------------------\nLocations, instances:\n------------------------------------" );
         for(int i = 0; i < one_inst_locations.size(); i++) {
@@ -228,4 +231,10 @@ public class CsvParserSimple {
         return Stream.concat(Arrays.stream(array1), Arrays.stream(array2))
                 .toArray(String[]::new);
     }
+    
+//	//Parser calls bundler to have access to controller
+//	public void setBundler(VaccineViewBundler viewBundler) {
+//		this.viewBundler = viewBundler;
+//	}
+
 }
