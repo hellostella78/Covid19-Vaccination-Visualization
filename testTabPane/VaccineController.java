@@ -5,23 +5,35 @@ import javax.swing.JTabbedPane;
 
 //Main + Controller
 public class VaccineController {
-	
-	//reference to view inside controller
-	private VaccineViewBundler viewBundler;
-	
-	ArrayList<VaccineRecord> vaxRecordList = new ArrayList<VaccineRecord>();
-			
-	public VaccineController()
-	{
+
+	private VaccineViewBundler viewBundler;	//reference to view inside controller
+	private ArrayList<VaccineRecord> vaxRecordList = new ArrayList<VaccineRecord>();
+
+	//this methods sets the viewBundler instantiated in main such that
+	//controller has access to all of the view panes, and manipulate accordingly
+	public void setBundler(VaccineViewBundler viewBundler) {
+		this.viewBundler = viewBundler;
 	}
-	
+
 	//method to add new record
 	public void addNewRecord(VaccineRecord newRecord)
 	{
 		//add to array list of persistent vaccine records
 		vaxRecordList.add(newRecord);
-		
-		//change view i.e. about.update();	
+		printRecordList();
+
+		//change view of home after button submitted in table format	
+		viewBundler.getAddData().clearFields();	
+	}
+
+	//helper function to print out record array list
+	public void printRecordList()
+	{
+		System.out.println("---------------Vaccination Record List----------------");
+		for(int i = 0; i < vaxRecordList.size(); i++)
+		{
+			System.out.println(vaxRecordList.get(i).toString()); //test
+		}
 	}
 	
 	//method to save record
@@ -30,10 +42,6 @@ public class VaccineController {
 	//method to load record
 	public void LoadData() {
 //		CsvParserSimple parseCSV = new CsvParserSimple();
-	}
-
-	public void SetBundler(VaccineViewBundler viewBundler) {
-		this.viewBundler = viewBundler;
 	}
 	
 	//method to visualize record

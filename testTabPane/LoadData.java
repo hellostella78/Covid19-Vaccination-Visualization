@@ -16,6 +16,7 @@ public class LoadData extends JPanel {
 	private JFileChooser chooser;
 	private JButton openButton;
 	private JLabel loadLabel;
+	private VaccineViewBundler viewBundler;
 
 	public LoadData() {
 		chooser = new JFileChooser();
@@ -28,6 +29,11 @@ public class LoadData extends JPanel {
 		panel.add(openButton);
 		panel.add(loadLabel);
 		add(panel, BorderLayout.PAGE_START);
+	}
+
+	//load view calls bundler to have access to controller
+	public void setBundler(VaccineViewBundler viewBundler) {
+		this.viewBundler = viewBundler;
 	}
 
 	private class ButtonListener implements ActionListener {

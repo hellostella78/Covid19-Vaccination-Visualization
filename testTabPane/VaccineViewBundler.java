@@ -5,16 +5,21 @@ public class VaccineViewBundler
 {
     //Home home;
     //SaveData saveData;
-    AddData addData;
-    LoadData loadData;
-    About about;
-    VaccineController controller;
+    private AddData addData;
+    private LoadData loadData;
+    private About about;
+    private VaccineController controller;
 
     public VaccineViewBundler()
     {
+		//instantiate view panes
         addData = new AddData();
         loadData = new LoadData();
         about = new About();
+
+		//set view bundlers for eahc of the view panes
+		addData.setBundler(this);
+		loadData.setBundler(this);
 
 		JFrame frame = new JFrame ("Vaccinations");
 		frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
@@ -34,6 +39,10 @@ public class VaccineViewBundler
 		frame.setVisible(true);
 
     }
+
+	public void setController(VaccineController controller) {
+		this.controller = controller;
+	}
 
 	public AddData getAddData() {
 		return addData;
@@ -60,12 +69,6 @@ public class VaccineViewBundler
 	}
 
 	public VaccineController getController() {
-		return controller;
+		return this.controller;
 	}
-
-	public void setController(VaccineController controller) {
-		this.controller = controller;
-	}
-
-
 }

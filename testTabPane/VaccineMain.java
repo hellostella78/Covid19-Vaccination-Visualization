@@ -6,12 +6,14 @@ import javax.swing.JTabbedPane;
 public class VaccineMain {
 
 	public static void main(String[] args) {
-
+		
+		//instantiate only one persisting viewBundler and controller
 		VaccineViewBundler viewBundler = new VaccineViewBundler();
 		VaccineController controller = new VaccineController();
 
+		//connect the two together
 		viewBundler.setController(controller);
-		controller.SetBundler(viewBundler);
+		controller.setBundler(viewBundler);
 	}
 
 }

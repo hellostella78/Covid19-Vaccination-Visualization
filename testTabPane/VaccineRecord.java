@@ -1,28 +1,28 @@
 public class VaccineRecord {
 	
-	private int id;
+	private String id;
 	private String firstName;
 	private String lastName;
 	private String vaxType;
-	private String date;
-	private String location;
+	private String vaxDate;
+	private String vaxLocation;
 	
 	//simple constructor to store one user data type when instantiated
-	public VaccineRecord(int id, String firstName, String lastName, String vaxType, String date, String location)
+	public VaccineRecord(String id, String lastName, String firstName, String vaxType, String vaxDate, String vaxLocation)
 	{
 		this.id = id;
-		this.firstName = firstName;
 		this.lastName = lastName;
+		this.firstName = firstName;
 		this.vaxType = vaxType;
-		this.date = date;
-		this.location = location;
+		this.vaxDate = vaxDate;
+		this.vaxLocation = vaxLocation;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -51,21 +51,31 @@ public class VaccineRecord {
 	}
 
 	public String getDate() {
-		return date;
+		return vaxDate;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setDate(String vaxDate) {
+		this.vaxDate = vaxDate;
 	}
 
 	public String getLocation() {
-		return location;
+		return vaxLocation;
 	}
 
-	public void setLocation(String location) {
-		this.location = location;
+	public void setLocation(String vaxLocation) {
+		this.vaxLocation = vaxLocation;
 	}
 	
+	public String toString()
+	{
+		return "\nID: " + id 
+			+ "\nLast Name: " + lastName
+			+ "\nFirst Name: " + firstName
+			+ "\nVaccine Type: " + vaxType
+			+ "\nVaccine Date: " + vaxDate
+			+ "\nVaccine Location: " + vaxLocation
+			+ "\n";
+	}
 	
 
 }

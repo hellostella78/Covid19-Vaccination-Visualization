@@ -19,6 +19,7 @@ public class AddData extends JPanel {
 	private JTextField vaxLocationField;
 	
 	private JButton submitButton;
+	private VaccineViewBundler viewBundler;
 
 	public AddData() {
 		idLabel = new JLabel("ID:");
@@ -59,14 +60,34 @@ public class AddData extends JPanel {
 		
 		setLayout(new GridLayout(7,2));
 	}
+
+	//add view uses bundler to access controller
+	public void setBundler(VaccineViewBundler viewBundler) {
+		this.viewBundler = viewBundler;
+	}
+
+	//method clears all fields after submit
+	public void clearFields() 
+	{
+		idField.setText("");
+		lastNameField.setText("");
+		firstNameField.setText("");
+		vaxTypeField.setText("");
+		vaxDateField.setText("");
+		vaxLocationField.setText("");
+	}
 	
 	private class ButtonListener implements ActionListener {
 
+		//listens for the submit button click on the add pane 
+		//and tells ViewBundler's controller to add this new record
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			if (e.getSource() == submitButton) {
-				System.out.println(idField.getText());
+				//System.out.println(idField.getText()); //tester
+				VaccineRecord newRecord = new VaccineRecord(idField.getText(), lastNameField.getText(), firstNameField.getText(), vaxTypeField.getText(), vaxDateField.getText(), vaxLocationField.getText());			
+				viewBundler.getController().addNewRecord(newRecord);
 			}
 		}
 	}
