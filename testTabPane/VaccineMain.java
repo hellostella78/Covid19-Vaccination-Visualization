@@ -9,14 +9,14 @@ public class VaccineMain {
 		frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
 
 		// create panels
-		Home home = new Home();
+//		Home home = new Home();
 		AddData addData = new AddData();
 		LoadData loadData = new LoadData();
 		About about = new About();
 
 		// add all panels to TabPane
 		JTabbedPane tabPane = new JTabbedPane();
-		tabPane.addTab("Home", home);
+//		tabPane.addTab("Home", home);
 		tabPane.addTab("Add Data", addData);
 		tabPane.addTab("Load Data", loadData);
 		tabPane.addTab("About", about);

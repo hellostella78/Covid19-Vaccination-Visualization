@@ -46,7 +46,7 @@ public class LoadData extends JPanel {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-					Model m;
+//					Model m;
 					String row = new String();
 					String[] data = null;
 					ArrayList<String> list = new ArrayList<String>();
