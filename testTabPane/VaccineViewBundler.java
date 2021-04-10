@@ -3,7 +3,7 @@ import javax.swing.JTabbedPane;
 
 public class VaccineViewBundler
 {
-    private Home home;
+    //private Home home;
     //SaveData saveData;
     private AddData addData;
     private LoadData loadData;
@@ -13,13 +13,13 @@ public class VaccineViewBundler
     public VaccineViewBundler()
     {
 		//instantiate view panes
-    	home = new Home();
+    	//home = new Home();
         addData = new AddData();
         loadData = new LoadData();
         about = new About();
 
 		//set view bundlers for eahc of the view panes
-        home.setBundler(this);
+        //home.setBundler(this);
 		addData.setBundler(this);
 		loadData.setBundler(this);
 
@@ -28,7 +28,7 @@ public class VaccineViewBundler
 
 		// add all panels to TabPane
 		JTabbedPane tabPane = new JTabbedPane();
-		tabPane.addTab("Home", home);
+		//tabPane.addTab("Home", home);
 		tabPane.addTab("Add Data", addData);
 		tabPane.addTab("Load Data", loadData);
 		tabPane.addTab("About", about);
@@ -46,13 +46,13 @@ public class VaccineViewBundler
 		this.controller = controller;
 	}
 
-	public Home getHome() {
-		return home;
-	}
-
-	public void setHome(Home home) {
-		this.home = home;
-	}
+//	public Home getHome() {
+//		return home;
+//	}
+//
+//	public void setHome(Home home) {
+//		this.home = home;
+//	}
 
 	public AddData getAddData() {
 		return addData;

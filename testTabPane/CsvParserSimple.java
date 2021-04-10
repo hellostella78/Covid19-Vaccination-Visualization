@@ -36,10 +36,7 @@ public class CsvParserSimple {
         int typeIndex = 0;
         int totalTypeIndex = 0;
         int totalLocationIndex = 0;
-//        LinkedList<String> one_inst_locations = new LinkedList<String>();
-//        LinkedList<String> total_locations = new LinkedList<String>();
-//        LinkedList<String> one_inst_type = new LinkedList<String>();
-//        LinkedList<String> total_type = new LinkedList<String>();
+        
         //2d array: Result contains numerous "arrays" 
         for (String[] arrays : result) { //arrays = row. result = file 
             System.out.println("\nString[" + listIndex++ + "] : " + Arrays.toString(arrays)); 
@@ -100,6 +97,10 @@ public class CsvParserSimple {
     
     public LinkedList<String> getTypeTotal(){
     	return total_type;
+    }
+    
+    public int getSize() {
+    	return total_locations.size();
     }
     
     public LinkedList<String> total(LinkedList<String> total){
