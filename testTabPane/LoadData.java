@@ -16,20 +16,20 @@ public class LoadData extends JPanel {
 	private JFileChooser chooser;
 	private JButton openButton;
 	private JLabel loadLabel;
-	
+
 	public LoadData() {
 		chooser = new JFileChooser();
 		openButton = new JButton("Open File");
 		openButton.addActionListener(new ButtonListener());
 		loadLabel = new JLabel();
-		
+
 		// layout
 		JPanel panel = new JPanel();
 		panel.add(openButton);
 		panel.add(loadLabel);
 		add(panel, BorderLayout.PAGE_START);
 	}
-	
+
 	private class ButtonListener implements ActionListener {
 
 		@Override
@@ -76,7 +76,7 @@ public class LoadData extends JPanel {
 				VaccineController controller = new VaccineController();
 			}
 		}
-		
+
 	}
-	
+
 }
