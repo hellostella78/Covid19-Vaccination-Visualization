@@ -34,7 +34,7 @@ public class VaccineController {
 	
 	//method to load record
 	public void LoadData() {
-		CsvParserSimple parseCSV = new CsvParserSimple();
+//		CsvParserSimple parseCSV = new CsvParserSimple();
 	}
 	
 	//method to visualize record
