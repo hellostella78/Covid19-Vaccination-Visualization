@@ -162,7 +162,7 @@ public class CsvParserSimple {
     }
 
     public String[] parseLine(String line, char separator) throws Exception {
-        return parse(line, separator, DEFAULT_QUOTE_CHAR).toArray(String[]::new);
+        return parse(line, separator, DEFAULT_QUOTE_CHAR).stream().toArray(String[]::new);
     }
 
     private List<String> parse(String line, char separator, char quoteChar)
