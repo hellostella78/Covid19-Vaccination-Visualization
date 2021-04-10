@@ -1,7 +1,7 @@
-package Load;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -21,13 +21,13 @@ public class CsvParserSimple {
     private String pendingField = "";
     private String[] pendingFieldLine = new String[]{};
 
-    public static void main(String[] args) throws Exception {
+    public CsvParserSimple(File csvFile) throws Exception{
 
         // loads CSV file from the resource folder.
-        URL resource = CsvParserSimple.class.getClassLoader().getResource("TeamProjectRandomData - 10People.csv");
+        URL resource = CsvParserSimple.class.getClassLoader().getResource(csvFile);
         File file = Paths.get(resource.toURI()).toFile();
 
-        CsvParserSimple obj = new CsvParserSimple();
+        CsvParserSimple obj = new CsvParserSimple(csvFile);
         List<String[]> result = obj.readFile(file, 1);
 
         int listIndex = 0;
