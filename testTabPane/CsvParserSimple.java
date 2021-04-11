@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 
 public class CsvParserSimple {
 
-//	public VaccineViewBundler viewBundler;
+	private VaccineViewBundler viewBundler;
 
     private static final char DEFAULT_SEPARATOR = ',';
     private static final char DOUBLE_QUOTES = '"';
@@ -28,7 +28,10 @@ public class CsvParserSimple {
     LinkedList<String> one_inst_type = new LinkedList<String>();
     LinkedList<String> total_type = new LinkedList<String>();
     
-    public CsvParserSimple(File csvFile) throws Exception{
+    public CsvParserSimple() {
+    }
+    
+    public void parse(File csvFile) throws Exception {
         List<String[]> result = readFile(csvFile, 1);
 
         int listIndex = 0;
@@ -41,8 +44,10 @@ public class CsvParserSimple {
         for (String[] arrays : result) { //arrays = row. result = file 
             System.out.println("\nString[" + listIndex++ + "] : " + Arrays.toString(arrays)); 
             
-//            VaccineRecord newRecord = new VaccineRecord(arrays[0], arrays[1], arrays[2], arrays[3], arrays[4], arrays[5]);	
-//            viewBundler.getController().addNewRecord(newRecord);
+            // add to records list
+            VaccineRecord newRecord = new VaccineRecord(arrays[0], arrays[1], arrays[2], arrays[3], arrays[4], arrays[5]);	
+            viewBundler.getController().addNewLoadRecord(newRecord);
+            
            int index = 0;
             for (String item : arrays) {//arrays = row. array = item per column 
             	if(index == 3) {
@@ -233,9 +238,7 @@ public class CsvParserSimple {
                 .toArray(String[]::new);
     }
     
-//	//Parser calls bundler to have access to controller
-//	public void setBundler(VaccineViewBundler viewBundler) {
-//		this.viewBundler = viewBundler;
-//	}
-
+	public void setBundler(VaccineViewBundler viewBundler) {
+		this.viewBundler = viewBundler;
+	}
 }

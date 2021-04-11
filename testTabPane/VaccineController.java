@@ -25,6 +25,14 @@ public class VaccineController {
 		//change view of home after button submitted in table format	
 		viewBundler.getAddData().clearFields();	
 	}
+	
+	//method to add new record from Parser
+	public void addNewLoadRecord(VaccineRecord newRecord)
+	{
+		//add to array list of persistent vaccine records
+		vaxRecordList.add(newRecord);
+		printRecordList();
+	}
 
 	//helper function to print out record array list
 	public void printRecordList()
