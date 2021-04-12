@@ -1,6 +1,3 @@
-import javax.swing.JFrame;
-import javax.swing.JTabbedPane;
-
 //hello my friends
 
 public class VaccineMain {

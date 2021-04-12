@@ -4,7 +4,7 @@ import javax.swing.JTabbedPane;
 public class VaccineViewBundler
 {
     private Home home;
-    //SaveData saveData;
+    private SaveData saveData;
     private AddData addData;
     private LoadData loadData;
     private About about;
@@ -15,6 +15,7 @@ public class VaccineViewBundler
     {
 		//instantiate view panes
     	home = new Home();
+		saveData = new SaveData();
         addData = new AddData();
         loadData = new LoadData();
         about = new About();
@@ -33,6 +34,7 @@ public class VaccineViewBundler
 		JTabbedPane tabPane = new JTabbedPane();
 		tabPane.addTab("Display Table", home);
 		tabPane.addTab("Add Data", addData);
+		tabPane.addTab("Save Data", saveData);
 		tabPane.addTab("Load Data", loadData);
 		tabPane.addTab("About", about);
 
@@ -55,6 +57,14 @@ public class VaccineViewBundler
 
 	public void setHome(Home home) {
 		this.home = home;
+	}
+
+	public SaveData getSaveData() {
+		return saveData;
+	}
+
+	public void setSaveData(SaveData saveData) {
+		this.saveData = saveData;
 	}
 
 	public AddData getAddData() {
@@ -88,7 +98,7 @@ public class VaccineViewBundler
 	public void setParser(CsvParserSimple csv) {
 		this.csv = csv;
 	}
-
+	
 	public VaccineController getController() {
 		return this.controller;
 	}
