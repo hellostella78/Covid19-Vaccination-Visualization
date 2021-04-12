@@ -1,5 +1,5 @@
 import javax.swing.*;
-//testingggggg
+
 public class About extends JPanel {
 
 	private JLabel aboutLabel1, aboutLabel2, aboutLabel3, aboutLabel4;
