@@ -59,6 +59,11 @@ public class Home extends JPanel {
 		add(scrollPane);
 	}
 
+	public JTable getJTable()
+	{
+		return table;
+	}
+
 	//Home calls bundler to have access to controller
 	public void setBundler(VaccineViewBundler viewBundler) {
 		this.viewBundler = viewBundler;

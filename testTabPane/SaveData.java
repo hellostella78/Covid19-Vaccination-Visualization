@@ -1,10 +1,10 @@
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,10 +40,30 @@ public class SaveData extends JPanel {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			//call controller to save data to a typed file .csv
-		
+			// TODO Auto-generated method stub
+			if (e.getSource() == saveButton) {
+                //auto-refresh Jtable before saving
+		        viewBundler.getHome().createTable();
+                //selects a file on-click
+                chooser.setDialogTitle("Create a file to save to");
+				int val = chooser.showOpenDialog(SaveData.this);
+				if (val == JFileChooser.APPROVE_OPTION) {
+					File csvFileToSave = chooser.getSelectedFile();
+                    //try to get controller to save current jtable to file
+					try {
+                        FileWriter fileWrite = new FileWriter(csvFileToSave);
+						BufferedWriter bufWrite = new BufferedWriter(fileWrite);
+                        viewBundler.getController().saveData(bufWrite);
+
+					} catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+                        // TODO Auto-generated catch block
+                        e1.printStackTrace();
+                    }
+                }				
+			}
 		}
-
 	}
-
 }

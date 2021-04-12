@@ -25,6 +25,7 @@ public class VaccineViewBundler
         home.setBundler(this);
 		addData.setBundler(this);
 		loadData.setBundler(this);
+		saveData.setBundler(this);
 		csv.setBundler(this);
 
 		JFrame frame = new JFrame ("Vaccinations");

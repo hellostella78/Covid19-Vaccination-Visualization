@@ -1,7 +1,10 @@
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 
 //Main + Controller
 public class VaccineController {
@@ -44,8 +47,43 @@ public class VaccineController {
 		}
 	}
 	
-	//method to save record
-	
+	//method to save current updated record to file by sending jTable into a .csv format
+	public void saveData(BufferedWriter bufWrite)
+	{
+		//retrieve jtable
+		JTable updatedTable = viewBundler.getHome().getJTable();
+
+		try {
+			
+			//save column names for first row
+			for (int i = 0; i < updatedTable.getColumnCount(); i++) {
+				if(i != updatedTable.getColumnCount()-1)
+					bufWrite.write(updatedTable.getColumnName(i) + ",");
+				else
+				bufWrite.write(updatedTable.getColumnName(i));
+			}
+			bufWrite.newLine();
+
+			//nested for loop to iterate through updated jtable
+			for(int row = 0; row < updatedTable.getRowCount(); row++)
+			{
+				for(int col = 0; col < updatedTable.getColumnCount(); col++)
+				{	//condiiton eliminates last comma
+					if((col != updatedTable.getColumnCount()-1))
+					{
+						bufWrite.write(updatedTable.getValueAt(row, col).toString() + ",");
+					}						
+					else
+						bufWrite.write(updatedTable.getValueAt(row, col).toString());
+				}
+				bufWrite.newLine();
+			}
+			bufWrite.close();
+		} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
+	}
 	
 	//method to load record
 	public void LoadData() {
