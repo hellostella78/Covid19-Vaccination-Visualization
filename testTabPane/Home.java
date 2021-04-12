@@ -54,13 +54,6 @@ public class Home extends JPanel {
 		// remove button
 		remove(updateButton);
 
-<<<<<<< Updated upstream
-	public JTable getJTable()
-	{
-		return table;
-	}
-
-=======
 		// remove scroll pane
 		if (scrollPane != null)
 			removeAll();
@@ -72,7 +65,6 @@ public class Home extends JPanel {
 		initTable(recordsLength);
 	}
 	
->>>>>>> Stashed changes
 	//Home calls bundler to have access to controller
 	public void setBundler(VaccineViewBundler viewBundler) {
 		this.viewBundler = viewBundler;
