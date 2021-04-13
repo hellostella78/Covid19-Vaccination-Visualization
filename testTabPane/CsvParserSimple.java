@@ -36,8 +36,8 @@ public class CsvParserSimple {
     
     public void parse(File csvFile) throws Exception {
         result = readFile(csvFile, 1);
-        getLocationsInst();
-        printList(one_inst_locations);
+        // getLocationsInst();
+        // printList(one_inst_locations);
 //        printLocations();
 //        System.out.println();
 //        for(int i = 0; i < total_locations.size(); i++) {
