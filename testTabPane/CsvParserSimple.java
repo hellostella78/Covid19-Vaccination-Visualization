@@ -42,7 +42,7 @@ public class CsvParserSimple {
         this.csvFile = csvFile;
         result = readFile(csvFile, 1);
         for (String[] arrays : result) { //arrays = row. result = file 
-            //System.out.println("\nString[" + listIndex++ + "] : " + Arrays.toString(arrays)); 
+            // System.out.println("\nString[" + listIndex++ + "] : " + Arrays.toString(arrays)); 
                         
             // add to records list
             VaccineRecord newRecord = new VaccineRecord(arrays[0], arrays[1], arrays[2], arrays[3], arrays[4], arrays[5]);	
@@ -76,11 +76,11 @@ public class CsvParserSimple {
         return count;
     }
 
-    private void printList(LinkedList<String> list) {
-    	for(int i = 0; i < list.size(); i++) {
-    		System.out.println(list.get(i));
-    	}
-    }
+    // private void printList(LinkedList<String> list) {
+    // 	for(int i = 0; i < list.size(); i++) {
+    // 		System.out.println(list.get(i));
+    // 	}
+    // }
     
     /**
      * linked list of locations with only one instance 
@@ -101,12 +101,20 @@ public class CsvParserSimple {
             for (String item : arrays) {//arrays = row. array = item per column 
             	if(index == 5) {
             		if(!(one_inst_locations.contains(item))){ //existing locations in file 
+                        // System.out.println("one_inst_locations-loop");
+
             			one_inst_locations.add(locationIndex, item);
                 		locationIndex++;
             		}
             	}
+                index++;
             }
         }
+        // System.out.println("one_inst_locations");
+        // for(int i=0; i<one_inst_locations.size(); i++) {
+        //     System.out.print(one_inst_locations.get(i));
+        //  }  
+
     	return one_inst_locations;
     }
     
@@ -124,11 +132,18 @@ public class CsvParserSimple {
             int index = 0;
              for (String item : arrays) {//arrays = row. array = item per column 
              	if(index == 5) {
+                    // System.out.println("totalLocationIndex-loop");
+
              		total_locations.add(totalLocationIndex, item);
              		totalLocationIndex++;
              	}
+                 index++;
              }
          }
+        //  System.out.println("otal_locations");
+        //  for(int i=0; i<total_locations.size(); i++) {
+        //      System.out.print(total_locations.get(i));
+        //   }  
     	return total_locations;
     }
     
@@ -151,12 +166,21 @@ public class CsvParserSimple {
 	        for (String item : arrays) {//arrays = row. array = item per column 
 	        	if(index == 3) {
 	        		if(!(one_inst_type.contains(item))){ //existing locations in file 
+                        // System.out.println("one_inst_type-loop");
+
 	        			one_inst_type.add(typeIndex, item);
 	            		typeIndex++;
 	        		}
 	        	}
+                index++;
 	        }
         }
+
+    //     // print one_inst
+    //     System.out.println("one_inst_type");
+    //    for(int i=0; i<one_inst_type.size(); i++) {
+    //        System.out.print(one_inst_type.get(i));
+    //     }
     	return one_inst_type;
     }
     
@@ -173,11 +197,19 @@ public class CsvParserSimple {
            int index = 0;
             for (String item : arrays) {//arrays = row. array = item per column 
             	if(index == 3) {
+                    // System.out.println("total_type-loop");
+
             		total_type.add(totalTypeIndex, item);
             		totalTypeIndex++;
             	}
+                index++;
             }
         }
+        // System.out.println("total_type");
+        // for(int i=0; i<total_type.size(); i++) {
+        //     System.out.print(total_type.get(i));
+        //  }
+ 
     	return total_type;
     }
     

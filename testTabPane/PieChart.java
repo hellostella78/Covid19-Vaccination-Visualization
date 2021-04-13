@@ -18,12 +18,7 @@ import java.io.*;
 import java.io.BufferedReader;
 
 public class PieChart extends JFrame {  
-  // private static final long serialVersionUID = 6294689542092367723L;  //??????????
-  
-  /**
-   *
-   */
-  private static final long serialVersionUID = 1L;
+
 
   public PieChart(String title, LinkedList<String> total, LinkedList<String> inst) {  
     super(title);  
@@ -49,10 +44,10 @@ public class PieChart extends JFrame {
     setContentPane(panel); 
 
     //dataset1
-    setSize(800, 400);  //Visual size 
-    setLocationRelativeTo(null);  //visual 
-    setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);  
-    setVisible(true);  
+    // setSize(800, 400);  //Visual size 
+    // setLocationRelativeTo(null);  //visual 
+    // setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);  
+    // setVisible(true);  
 
     // setSize(800, 400);  //Visual size 
     // setLocationRelativeTo(null);  //visual 
@@ -94,7 +89,7 @@ public class PieChart extends JFrame {
       }
     }
     return count;
-}
+  }
   
   // public static void main(String[] args) {  
   //   SwingUtilities.invokeLater(() -> {  

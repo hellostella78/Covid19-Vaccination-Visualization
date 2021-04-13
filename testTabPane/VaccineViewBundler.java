@@ -12,24 +12,24 @@ public class VaccineViewBundler
     private CsvParserSimple csv;
     private VaccineController controller;
 
-    public VaccineViewBundler() throws Exception
+    public VaccineViewBundler()
     {
 		//instantiate view panes
     	home = new Home();
 		saveData = new SaveData();
         addData = new AddData();
         loadData = new LoadData();
+        csv = new CsvParserSimple();
 		visualize = new VisualizeData();
         about = new About();
-        csv = new CsvParserSimple();
 
 		//set view bundlers for eahc of the view panes
         home.setBundler(this);
 		addData.setBundler(this);
 		loadData.setBundler(this);
 		saveData.setBundler(this);
-		visualize.setBundler(this);
 		csv.setBundler(this);
+		visualize.setBundler(this);
 
 		JFrame frame = new JFrame ("Vaccinations");
 		frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);

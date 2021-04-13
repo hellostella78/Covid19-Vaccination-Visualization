@@ -23,7 +23,7 @@ public class VaccineController {
 	{
 		//add to array list of persistent vaccine records
 		vaxRecordList.add(newRecord);
-		printRecordList();
+		// printRecordList();
 
 		//change view of home after button submitted in table format	
 		viewBundler.getAddData().clearFields();	
@@ -34,7 +34,7 @@ public class VaccineController {
 	{
 		//add to array list of persistent vaccine records
 		vaxRecordList.add(newRecord);
-		printRecordList();
+		// printRecordList();
 	}
 
 	//helper function to print out record array list

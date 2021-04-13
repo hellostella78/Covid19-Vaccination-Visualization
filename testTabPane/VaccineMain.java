@@ -2,7 +2,7 @@
 
 public class VaccineMain {
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 		
 		//instantiate only one persisting viewBundler and controller
 		VaccineViewBundler viewBundler = new VaccineViewBundler();
