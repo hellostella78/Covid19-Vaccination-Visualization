@@ -36,18 +36,41 @@ public class CsvParserSimple {
     
     public void parse(File csvFile) throws Exception {
         result = readFile(csvFile, 1);
+        for (String[] arrays : result) { //arrays = row. result = file 
+            //System.out.println("\nString[" + listIndex++ + "] : " + Arrays.toString(arrays)); 
+                        
+            // add to records list
+            VaccineRecord newRecord = new VaccineRecord(arrays[0], arrays[1], arrays[2], arrays[3], arrays[4], arrays[5]);	
+            viewBundler.getController().addNewLoadRecord(newRecord);
+            
+            int index = 0;
+            for (String item : arrays) {//arrays = row. array = item per column 
+            }
+        }
         // getLocationsInst();
         // printList(one_inst_locations);
-//        printLocations();
+    //    printLocations();
 //        System.out.println();
+            //incremented location list 
 //        for(int i = 0; i < total_locations.size(); i++) {
 //        	System.out.print(total_locations.get(i) + ",  ");
 //        }
 //        System.out.println();
+        //got count per given
 //        int count = getCount(total_locations, "Israel");
 //        System.out.println(count);
     }
     
+    private int locationCount(String location){
+       int count = getCount(total_locations, location);
+       return count;
+    }
+
+    private int typeCount(String type){
+        int count = getCount(total_type, type);
+        return count;
+     }
+
     private void printList(LinkedList<String> list) {
     	for(int i = 0; i < list.size(); i++) {
     		System.out.println(list.get(i));
@@ -66,10 +89,6 @@ public class CsvParserSimple {
         //2d array: Result contains numerous "arrays" 
         for (String[] arrays : result) { //arrays = row. result = file 
 //            System.out.println("\nString[" + listIndex++ + "] : " + Arrays.toString(arrays)); 
-            
-            // add to records list
-            VaccineRecord newRecord = new VaccineRecord(arrays[0], arrays[1], arrays[2], arrays[3], arrays[4], arrays[5]);	
-            viewBundler.getController().addNewLoadRecord(newRecord);
             
            int index = 0;
             for (String item : arrays) {//arrays = row. array = item per column 
@@ -93,9 +112,6 @@ public class CsvParserSimple {
          for (String[] arrays : result) { //arrays = row. result = file 
 //             System.out.println("\nString[" + listIndex++ + "] : " + Arrays.toString(arrays)); 
              
-             // add to records list
-             VaccineRecord newRecord = new VaccineRecord(arrays[0], arrays[1], arrays[2], arrays[3], arrays[4], arrays[5]);	
-             viewBundler.getController().addNewLoadRecord(newRecord);
              
             int index = 0;
              for (String item : arrays) {//arrays = row. array = item per column 
@@ -121,10 +137,6 @@ public class CsvParserSimple {
         for (String[] arrays : result) { //arrays = row. result = file 
 //            System.out.println("\nString[" + listIndex++ + "] : " + Arrays.toString(arrays)); 
             
-            // add to records list
-            VaccineRecord newRecord = new VaccineRecord(arrays[0], arrays[1], arrays[2], arrays[3], arrays[4], arrays[5]);	
-            viewBundler.getController().addNewLoadRecord(newRecord);
-            
             int index = 0;
 	        for (String item : arrays) {//arrays = row. array = item per column 
 	        	if(index == 3) {
@@ -146,10 +158,6 @@ public class CsvParserSimple {
         //2d array: Result contains numerous "arrays" 
         for (String[] arrays : result) { //arrays = row. result = file 
 //            System.out.println("\nString[" + listIndex++ + "] : " + Arrays.toString(arrays)); 
-            
-            // add to records list
-            VaccineRecord newRecord = new VaccineRecord(arrays[0], arrays[1], arrays[2], arrays[3], arrays[4], arrays[5]);	
-            viewBundler.getController().addNewLoadRecord(newRecord);
             
            int index = 0;
             for (String item : arrays) {//arrays = row. array = item per column 
