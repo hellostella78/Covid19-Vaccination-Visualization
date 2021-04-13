@@ -18,24 +18,17 @@ public class Home extends JPanel {
 	private JTable table;
 
 	public Home() {
-		if (records != null)
-			createTable();
-		updateButton = new JButton("Display Table");
-		updateButton.addActionListener(new ButtonListener());
-		add(updateButton, BorderLayout.NORTH);		
+//		if (records != null)
+//			createTable();
+//		updateButton = new JButton("Display Table");
+//		updateButton.addActionListener(new ButtonListener());
+//		add(updateButton, BorderLayout.NORTH);	
+		initTable(0);
 	}
 
-	public void createTable() {
-		// remove scroll pane
-		if (scrollPane != null)
-			removeAll();
-
-		// fetch records list
-		records = viewBundler.getController().getRecordList();
-		int recordsLength = records.size();
-
+	public void initTable(int recLength) {
 		String[] headers = {"ID", "Last Name", "First Name", "Vaccine Type", "Vaccine Date", "Vaccine Location"};
-		String[][] entries = new String[recordsLength][6];
+		String[][] entries = new String[recLength][6];
 
 		//populate entries
 		for(int i=0; i<entries.length; i++) {
@@ -57,6 +50,25 @@ public class Home extends JPanel {
 
 		//add the scroll pane to panel.
 		add(scrollPane);
+		
+		updateButton = new JButton("Refresh Table");
+		updateButton.addActionListener(new ButtonListener());
+		add(updateButton, BorderLayout.NORTH);
+	}
+	
+	public void createTable() {
+		// remove update button
+		remove(updateButton);
+		
+		// remove scroll pane
+		if (scrollPane != null)
+			removeAll();
+
+		// fetch records list
+		records = viewBundler.getController().getRecordList();
+		int recordsLength = records.size();
+
+		initTable(recordsLength);
 	}
 
 	public JTable getJTable()
@@ -75,12 +87,7 @@ public class Home extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			if (e.getSource() == updateButton) {
-				remove(updateButton);
 				createTable();
-				updateButton = new JButton("Refresh Table");
-				updateButton.addActionListener(new ButtonListener());
-				add(updateButton, BorderLayout.NORTH);
-
 			}
 		}
 		
