@@ -24,7 +24,7 @@ public class CsvParserSimple {
     private String[] pendingFieldLine = new String[]{};
     
     private List<String[]> result;
-    
+    private File csvFile;
     LinkedList<String> one_inst_locations = new LinkedList<String>();
     LinkedList<String> total_locations = new LinkedList<String>();
     LinkedList<String> one_inst_type = new LinkedList<String>();
@@ -34,7 +34,12 @@ public class CsvParserSimple {
     	
     }
     
+    public File getCSV(){
+        return this.csvFile;
+    }
+
     public void parse(File csvFile) throws Exception {
+        this.csvFile = csvFile;
         result = readFile(csvFile, 1);
         for (String[] arrays : result) { //arrays = row. result = file 
             //System.out.println("\nString[" + listIndex++ + "] : " + Arrays.toString(arrays)); 
@@ -69,7 +74,7 @@ public class CsvParserSimple {
     private int typeCount(String type){
         int count = getCount(total_type, type);
         return count;
-     }
+    }
 
     private void printList(LinkedList<String> list) {
     	for(int i = 0; i < list.size(); i++) {
@@ -80,12 +85,14 @@ public class CsvParserSimple {
     /**
      * linked list of locations with only one instance 
      * @return linked list 
+     * @throws Exception
      */
-    public LinkedList<String> getLocationsInst(){
+    public LinkedList<String> getLocationsInst() throws Exception{
         int listIndex = 0;
         int locationIndex = 0;
         int totalLocationIndex = 0;
-        
+        result = readFile(csvFile, 1);
+
         //2d array: Result contains numerous "arrays" 
         for (String[] arrays : result) { //arrays = row. result = file 
 //            System.out.println("\nString[" + listIndex++ + "] : " + Arrays.toString(arrays)); 
@@ -103,11 +110,12 @@ public class CsvParserSimple {
     	return one_inst_locations;
     }
     
-    public LinkedList<String> getLocationsTotal(){
+    public LinkedList<String> getLocationsTotal() throws Exception{
     	 int listIndex = 0;
          int locationIndex = 0;
          int totalLocationIndex = 0;
-         
+         result = readFile(csvFile, 1);
+
          //2d array: Result contains numerous "arrays" 
          for (String[] arrays : result) { //arrays = row. result = file 
 //             System.out.println("\nString[" + listIndex++ + "] : " + Arrays.toString(arrays)); 
@@ -127,12 +135,14 @@ public class CsvParserSimple {
     /**
      * linked list of vaccine type with only one instance 
      * @return linked list 
+     * @throws Exception
      */
-    public LinkedList<String> getTypeInst(){
+    public LinkedList<String> getTypeInst() throws Exception{
     	int listIndex = 0;
         int typeIndex = 0;
         int totalTypeIndex = 0;
-        
+        result = readFile(csvFile, 1);
+
         //2d array: Result contains numerous "arrays" 
         for (String[] arrays : result) { //arrays = row. result = file 
 //            System.out.println("\nString[" + listIndex++ + "] : " + Arrays.toString(arrays)); 
@@ -150,11 +160,12 @@ public class CsvParserSimple {
     	return one_inst_type;
     }
     
-    public LinkedList<String> getTypeTotal(){
+    public LinkedList<String> getTypeTotal() throws Exception{
     	int listIndex = 0;
         int typeIndex = 0;
         int totalTypeIndex = 0;
-        
+        result = readFile(csvFile, 1);
+
         //2d array: Result contains numerous "arrays" 
         for (String[] arrays : result) { //arrays = row. result = file 
 //            System.out.println("\nString[" + listIndex++ + "] : " + Arrays.toString(arrays)); 
@@ -193,7 +204,7 @@ public class CsvParserSimple {
     	    return count;
     }
 
-    public void printLocations() {
+    public void printLocations() throws Exception {
     	getLocationsTotal();
     	getLocationsInst();
     	System.out.println("\n------------------------------------\nLocations, instances:\n------------------------------------" );
@@ -202,7 +213,7 @@ public class CsvParserSimple {
         }
     }
     
-    public void printType() {
+    public void printType() throws Exception {
     	getTypeTotal();
     	getTypeInst();
         System.out.println("\n------------------------------------\nType, instances:\n------------------------------------" );
@@ -211,6 +222,31 @@ public class CsvParserSimple {
         }
     }
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /*
      * This section are for methods that assist in reading and transposing the csv file 
      */
