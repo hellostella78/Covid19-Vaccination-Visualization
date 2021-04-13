@@ -7,6 +7,7 @@ public class VaccineViewBundler
     private SaveData saveData;
     private AddData addData;
     private LoadData loadData;
+	private VisualizeData visualize;
     private About about;
     private CsvParserSimple csv;
     private VaccineController controller;
@@ -18,6 +19,7 @@ public class VaccineViewBundler
 		saveData = new SaveData();
         addData = new AddData();
         loadData = new LoadData();
+		visualize = new VisualizeData();
         about = new About();
         csv = new CsvParserSimple();
 
@@ -26,6 +28,7 @@ public class VaccineViewBundler
 		addData.setBundler(this);
 		loadData.setBundler(this);
 		saveData.setBundler(this);
+		visualize.setBundler(this);
 		csv.setBundler(this);
 
 		JFrame frame = new JFrame ("Vaccinations");
@@ -35,8 +38,9 @@ public class VaccineViewBundler
 		JTabbedPane tabPane = new JTabbedPane();
 		tabPane.addTab("Display Table", home);
 		tabPane.addTab("Add Data", addData);
-		tabPane.addTab("Save Data", saveData);
 		tabPane.addTab("Load Data", loadData);
+		tabPane.addTab("Save Data", saveData);
+		tabPane.addTab("Visualize Data", visualize);
 		tabPane.addTab("About", about);
 
 		// set size of frame
