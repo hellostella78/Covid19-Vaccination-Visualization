@@ -12,7 +12,7 @@ public class VaccineViewBundler
     private CsvParserSimple csv;
     private VaccineController controller;
 
-    public VaccineViewBundler()
+    public VaccineViewBundler() throws Exception
     {
 		//instantiate view panes
     	home = new Home();
