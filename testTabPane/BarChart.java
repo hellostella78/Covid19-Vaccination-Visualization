@@ -8,9 +8,9 @@ import org.jfree.ui.ApplicationFrame;
 import org.jfree.ui.RefineryUtilities; 
 import java.util.*;
 
-public class BarChart_AWT extends ApplicationFrame {
+public class BarChart extends ApplicationFrame {
    
-   public BarChart_AWT( String applicationTitle, LinkedList<String> total, LinkedList<String> inst) {
+   public BarChart( String applicationTitle, LinkedList<String> total, LinkedList<String> inst) {
       super( applicationTitle );        
       JFreeChart barChart = ChartFactory.createBarChart(
          applicationTitle,           
@@ -48,10 +48,4 @@ public class BarChart_AWT extends ApplicationFrame {
       return count;
     }
 
-   /*public static void main( String[ ] args ) {
-      BarChart_AWT chart = new BarChart_AWT("Bar Graph", new LinkedList<>(), new LinkedList<>());
-      chart.pack( );        
-      RefineryUtilities.centerFrameOnScreen( chart );        
-      chart.setVisible( true ); 
-   }*/
 }
