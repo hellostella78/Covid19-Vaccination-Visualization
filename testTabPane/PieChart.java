@@ -28,7 +28,7 @@ public class PieChart extends JFrame {
 
     // Create chart  
     JFreeChart chart = ChartFactory.createPieChart(  
-        "Pie Chart Example",  
+        title,  
         dataset,  
         true,   
         true,  
