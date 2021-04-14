@@ -14,6 +14,7 @@ public class VisualizeData extends JPanel {
     private VaccineViewBundler viewBundler;
     private JButton vis;
     private PieChart locChart, typeChart;
+    private BarChart_AWT locBar, typeBar;
     private JScrollPane scrollPane;
     private JPanel container;
     private CsvParserSimple parser;
@@ -24,15 +25,20 @@ public class VisualizeData extends JPanel {
         vis.addActionListener(new ButtonListener());
         add(vis, BorderLayout.NORTH);
         
-        locChart = new PieChart("Location Pie Chart", new LinkedList<>(), new LinkedList<>());
-        typeChart = new PieChart("Type Pie Chart", new LinkedList<>(), new LinkedList<>());
+        locChart = new PieChart("Vaccine doses by Location", new LinkedList<>(), new LinkedList<>());
+        typeChart = new PieChart("Vaccine doses by Type", new LinkedList<>(), new LinkedList<>());
         
+        locBar = new BarChart_AWT("trial location", new LinkedList<>(), new LinkedList<>());
+        typeBar = new BarChart_AWT("trial type",new LinkedList<>(), new LinkedList<>());
+
       //  ex.PieChartbyLocation("pieeee", new LinkedList<>(), new LinkedList<>());
        // example = new PieChart("Bar Graph", total, inst);
         //create scroll pane and add table to it.
-        container = new JPanel(new GridLayout(2,1));
+        container = new JPanel(new GridLayout(4,1));
         container.add(locChart.getContentPane());
         container.add(typeChart.getContentPane());
+        container.add(locBar.getContentPane());
+        container.add(typeBar.getContentPane());
         // container.setPreferredSize(new Dimension(750,750));
         
 		scrollPane = new JScrollPane();
@@ -41,7 +47,7 @@ public class VisualizeData extends JPanel {
         scrollPane.setPreferredSize(new Dimension(750,700));
 
         //add the scroll pane to panel.
-		add(scrollPane, BorderLayout.CENTER);
+		add(scrollPane, BorderLayout.SOUTH);
 		
 		// vis = new JButton("Refresh Graph");
 		// vis.addActionListener(new ButtonListener());
@@ -54,8 +60,11 @@ public class VisualizeData extends JPanel {
         LinkedList<String> totalType = viewBundler.getController().getTypeTotal();
         LinkedList<String> instType = viewBundler.getController().getTypeInst();
 
-        locChart = new PieChart("Location Pie Chart", totalLocation, instLocation);
-        typeChart = new PieChart("Type Pie Chart", totalType, instType);  //INPUT INSTlOCATION AND TOTALLOCATION etc  
+        locChart = new PieChart("Vaccine doses by Location", totalLocation, instLocation);
+        typeChart = new PieChart("Vaccine doses by Type", totalType, instType);  //INPUT INSTlOCATION AND TOTALLOCATION etc  
+       
+        locBar = new BarChart_AWT("trial location", totalLocation, instLocation);
+        typeBar = new BarChart_AWT("trial type", totalType, instType);
         //create scroll pane and add table to it.
 		// scrollPane = new JScrollPane(example.getContentPane());
 
@@ -66,9 +75,11 @@ public class VisualizeData extends JPanel {
 		vis.addActionListener(new ButtonListener());
 		add(vis, BorderLayout.NORTH);
 
-        container = new JPanel(new GridLayout(2,1));
+        container = new JPanel(new GridLayout(4,1));
         container.add(locChart.getContentPane());
         container.add(typeChart.getContentPane());
+        container.add(locBar.getContentPane());
+        container.add(typeBar.getContentPane());
         // container.setPreferredSize(new Dimension(750,750));
         
 		scrollPane = new JScrollPane();
@@ -77,7 +88,7 @@ public class VisualizeData extends JPanel {
         scrollPane.setPreferredSize(new Dimension(750,700));
 
         //add the scroll pane to panel.
-		add(scrollPane, BorderLayout.CENTER);
+		add(scrollPane, BorderLayout.SOUTH);
 
     }
 
