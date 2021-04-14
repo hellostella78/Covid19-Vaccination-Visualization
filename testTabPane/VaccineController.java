@@ -1,12 +1,11 @@
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
-
-import java.util.*;
 
 //Main + Controller
 public class VaccineController {
@@ -25,7 +24,7 @@ public class VaccineController {
 	{
 		//add to array list of persistent vaccine records
 		vaxRecordList.add(newRecord);
-		// printRecordList();
+		printRecordList();
 
 		//change view of home after button submitted in table format	
 		viewBundler.getAddData().clearFields();	
@@ -36,7 +35,7 @@ public class VaccineController {
 	{
 		//add to array list of persistent vaccine records
 		vaxRecordList.add(newRecord);
-		// printRecordList();
+		printRecordList();
 	}
 
 	//helper function to print out record array list
@@ -191,7 +190,7 @@ public class VaccineController {
 		return totalInstance;
 	}
 	
-	private int getCount(LinkedList<String> list, String inst) {
+	private int getCount(LinkedList<String> list, String inst) { //totalLocations, String i
 		int count = 0;
 		for(int i = 0; i < list.size(); i++) {
 			if((list.get(i).equals(inst))){ 
