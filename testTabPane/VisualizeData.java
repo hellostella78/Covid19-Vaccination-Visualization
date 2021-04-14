@@ -3,9 +3,8 @@ import java.util.LinkedList;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import java.awt.event.*;
-
 import java.awt.BorderLayout;
+import java.awt.event.*;
 
 public class VisualizeData extends JPanel {
     private VaccineViewBundler viewBundler;
@@ -59,7 +58,6 @@ public class VisualizeData extends JPanel {
 	public void setBundler(VaccineViewBundler viewBundler) {
 		this.viewBundler = viewBundler;
 	}
-
     private class ButtonListener implements ActionListener {
 
         @Override

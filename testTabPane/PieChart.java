@@ -36,7 +36,7 @@ public class PieChart extends JFrame {
   
     //Format Label  
     PieSectionLabelGenerator labelGenerator = new StandardPieSectionLabelGenerator (  
-        "Marks {0} : ({2})", new DecimalFormat("0"), new DecimalFormat("0%"));  
+        "{0} ({2})", new DecimalFormat("0"), new DecimalFormat("0%"));  
     ((PiePlot) chart.getPlot()).setLabelGenerator(labelGenerator);  
       
     // Create Panel  
