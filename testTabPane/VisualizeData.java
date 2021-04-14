@@ -31,14 +31,10 @@ public class VisualizeData extends JPanel {
     }
 
     public void visualizeData() throws Exception {
-        if(viewBundler.getLoadData().getLoaded()) {
-            LinkedList<String> totalLocation;
-            totalLocation = viewBundler.getParser().getLocationsTotal();
-            LinkedList<String> instLocation;
-            instLocation = viewBundler.getParser().getLocationsInst();
-    
-            example = new PieChart("Pie Chart Example", totalLocation, instLocation);  //INPUT INSTlOCATION AND TOTALLOCATION etc  
-        }
+        LinkedList<String> totalLocation =  viewBundler.getController().getLocationsTotal();
+        LinkedList<String> instLocation = viewBundler.getController().getLocationsInst();
+
+        example = new PieChart("Location Pie Chart", totalLocation, instLocation);  //INPUT INSTlOCATION AND TOTALLOCATION etc  
 
         //create scroll pane and add table to it.
 		scrollPane = new JScrollPane(example.getContentPane());
