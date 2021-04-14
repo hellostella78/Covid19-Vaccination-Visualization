@@ -14,7 +14,7 @@ public class VisualizeData extends JPanel {
     private VaccineViewBundler viewBundler;
     private JButton vis;
     private PieChart locChart, typeChart;
-    private BarChart_AWT locBar, typeBar;
+    private BarChart locBar, typeBar;
     private JScrollPane scrollPane;
     private JPanel container;
     private CsvParserSimple parser;
@@ -25,11 +25,11 @@ public class VisualizeData extends JPanel {
         vis.addActionListener(new ButtonListener());
         add(vis, BorderLayout.NORTH);
         
-        locChart = new PieChart("Vaccine doses by Location", new LinkedList<>(), new LinkedList<>());
-        typeChart = new PieChart("Vaccine doses by Type", new LinkedList<>(), new LinkedList<>());
+        locChart = new PieChart("Vaccine doses by Location (Pie)", new LinkedList<>(), new LinkedList<>());
+        typeChart = new PieChart("Vaccine doses by Type (Pie)", new LinkedList<>(), new LinkedList<>());
         
-        locBar = new BarChart_AWT("trial location", new LinkedList<>(), new LinkedList<>());
-        typeBar = new BarChart_AWT("trial type",new LinkedList<>(), new LinkedList<>());
+        locBar = new BarChart("Vaccine doses by Location (Bar)", new LinkedList<>(), new LinkedList<>());
+        typeBar = new BarChart("Vaccine doses by Type (Bar)",new LinkedList<>(), new LinkedList<>());
 
       //  ex.PieChartbyLocation("pieeee", new LinkedList<>(), new LinkedList<>());
        // example = new PieChart("Bar Graph", total, inst);
@@ -60,11 +60,11 @@ public class VisualizeData extends JPanel {
         LinkedList<String> totalType = viewBundler.getController().getTypeTotal();
         LinkedList<String> instType = viewBundler.getController().getTypeInst();
 
-        locChart = new PieChart("Vaccine doses by Location", totalLocation, instLocation);
-        typeChart = new PieChart("Vaccine doses by Type", totalType, instType);  //INPUT INSTlOCATION AND TOTALLOCATION etc  
+        locChart = new PieChart("Vaccine doses by Location (Pie)", totalLocation, instLocation);
+        typeChart = new PieChart("Vaccine doses by Type (Pie)", totalType, instType);  //INPUT INSTlOCATION AND TOTALLOCATION etc  
        
-        locBar = new BarChart_AWT("trial location", totalLocation, instLocation);
-        typeBar = new BarChart_AWT("trial type", totalType, instType);
+        locBar = new BarChart("Vaccine doses by Location (Bar)", totalLocation, instLocation);
+        typeBar = new BarChart("Vaccine doses by Type (Bar)", totalType, instType);
         //create scroll pane and add table to it.
 		// scrollPane = new JScrollPane(example.getContentPane());
 
