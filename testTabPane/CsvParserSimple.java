@@ -194,7 +194,7 @@ public class CsvParserSimple {
     	return totalInstance;
     }
     
-    private int getCount(LinkedList<String> list, String inst) {
+    public int getCount(LinkedList<String> list, String inst) {
     	    int count = 0;
     	    for(int i = 0; i < list.size(); i++) {
     	    	if((list.get(i).equals(inst))){ 
