@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 
+import java.util.*;
+
 //Main + Controller
 public class VaccineController {
 
@@ -97,4 +99,105 @@ public class VaccineController {
 		return vaxRecordList;
 	}
 	
+	//THIS IS FOR ACCESSING CERTAIN COLUMNS
+	private int locationCount(String location){
+		LinkedList<String> totalLocation = new LinkedList<String>(); 
+		int count;
+		for(int i = 0; i < vaxRecordList.size(); i++){
+			String loc = vaxRecordList.get(i).getLocation();
+			totalLocation.add(loc);
+		}
+
+		return getCount(totalLocation, location);
+	 
+	}
+ 
+	private int typeCount(String type){
+	LinkedList<String> totalType = new LinkedList<String>(); 
+	for(int i = 0; i < vaxRecordList.size(); i++){
+		String loc = vaxRecordList.get(i).getVaxType();
+		totalType.add(loc);
+	}
+
+	return getCount(totalType, type);
+	}
+ 
+	 /**
+	  * linked list of locations with only one instance 
+	  * @return linked list 
+	  * @throws Exception
+	  */
+	 public LinkedList<String> getLocationsInst() throws Exception{
+		LinkedList<String> totalLocation = new LinkedList<String>(); 
+		LinkedList<String> instLocation = new LinkedList<String>(); 
+		for(int i = 0; i < vaxRecordList.size(); i++){
+			String loc = vaxRecordList.get(i).getLocation();
+			totalLocation.add(loc);
+			if(!(instLocation.contains(loc))){ //existing locations in file 
+				// System.out.println("one_inst_locations-loop");
+					
+				instLocation.add(loc);
+			}
+		}
+
+		return instLocation;
+	 }
+	 
+	 public LinkedList<String> getLocationsTotal() throws Exception{
+		LinkedList<String> totalLocation = new LinkedList<String>(); 
+		for(int i = 0; i < vaxRecordList.size(); i++){
+			String loc = vaxRecordList.get(i).getLocation();
+			totalLocation.add(loc);
+		}
+		 //  System.out.println("total_locations");
+		 //  for(int i=0; i<total_locations.size(); i++) {
+		 //      System.out.print(total_locations.get(i));
+		 //   }  
+		 return totalLocation;
+	 }
+	 
+	 /**
+	  * linked list of vaccine type with only one instance 
+	  * @return linked list 
+	  * @throws Exception
+	  */
+	public LinkedList<String> getTypeInst() throws Exception{
+		LinkedList<String> totalType = new LinkedList<String>(); 
+		LinkedList<String> instType = new LinkedList<String>(); 
+		for(int i = 0; i < vaxRecordList.size(); i++){
+			String type = vaxRecordList.get(i).getVaxType();
+			totalType.add(type);
+			if(!(instType.contains(type))){ //existing locations in file 
+				// System.out.println("one_inst_locations-loop");
+				instType.add(type);
+			}
+		}
+
+		return instType;
+	}
+	 
+	public LinkedList<String> getTypeTotal() throws Exception{
+		LinkedList<String> totalType = new LinkedList<String>(); 
+		for(int i = 0; i < vaxRecordList.size(); i++){
+			String type = vaxRecordList.get(i).getVaxType();
+			totalType.add(type);
+		}
+
+		return totalType;
+	}
+	 
+	public LinkedList<String> total(LinkedList<String> total){
+		LinkedList<String> totalInstance = new LinkedList<String>();
+		return totalInstance;
+	}
+	
+	private int getCount(LinkedList<String> list, String inst) {
+		int count = 0;
+		for(int i = 0; i < list.size(); i++) {
+			if((list.get(i).equals(inst))){ 
+				count++;
+			}
+		}
+		return count;
+	}
 }
