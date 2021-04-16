@@ -1,12 +1,12 @@
 public class VaccineRecord {
-	
+
 	private String id;
 	private String firstName;
 	private String lastName;
 	private String vaxType;
 	private String vaxDate;
 	private String vaxLocation;
-	
+
 	//simple constructor to store one user data type when instantiated
 	public VaccineRecord(String id, String lastName, String firstName, String vaxType, String vaxDate, String vaxLocation)
 	{
@@ -65,10 +65,10 @@ public class VaccineRecord {
 	public void setLocation(String vaxLocation) {
 		this.vaxLocation = vaxLocation;
 	}
-	
+
 	public String toString()
 	{
-		return "\nID: " + id 
+		return "\nID: " + id
 			+ "\nLast Name: " + lastName
 			+ "\nFirst Name: " + firstName
 			+ "\nVaccine Type: " + vaxType
@@ -76,6 +76,6 @@ public class VaccineRecord {
 			+ "\nVaccine Location: " + vaxLocation
 			+ "\n";
 	}
-	
+
 
 }

@@ -2,6 +2,8 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "c:\\Users\\Shaira Alam\\Downloads\\jfreechart-1.0.19\\jfreechart-1.0.19\\lib\\jcommon-1.0.23.jar",
-        "c:\\Users\\Shaira Alam\\Downloads\\jfreechart-1.0.19\\jfreechart-1.0.19\\lib\\jfreechart-1.0.19.jar"
+        "c:\\Users\\Shaira Alam\\Downloads\\jfreechart-1.0.19\\jfreechart-1.0.19\\lib\\jfreechart-1.0.19.jar",
+        "/Users/zuymp/Downloads/jcommon-1.0.23.jar",
+        "/Users/zuymp/Downloads/jfreechart-1.0.19.jar"
     ]
 }

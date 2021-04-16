@@ -17,8 +17,10 @@ public class LoadData extends JPanel {
 	private JButton openButton;
 	private JLabel loadLabel;
 	private VaccineViewBundler viewBundler;
+	private boolean loaded;
 
 	public LoadData() {
+		loaded = false;
 		chooser = new JFileChooser();
 		openButton = new JButton("Open File");
 		openButton.addActionListener(new ButtonListener());
@@ -34,6 +36,10 @@ public class LoadData extends JPanel {
 	//load view calls bundler to have access to controller
 	public void setBundler(VaccineViewBundler viewBundler) {
 		this.viewBundler = viewBundler;
+	}
+
+	public boolean getLoaded() {
+		return loaded;
 	}
 
 	private class ButtonListener implements ActionListener {
@@ -79,6 +85,7 @@ public class LoadData extends JPanel {
 //					}
 					try {
 //						CsvParserSimple parse = new CsvParserSimple(csvFile);
+						loaded = true;
 						viewBundler.getParser().parse(csvFile);
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
@@ -86,7 +93,7 @@ public class LoadData extends JPanel {
 					}
 				}
 				/////
-				
+
 			}
 		}
 

@@ -1,6 +1,7 @@
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
@@ -23,18 +24,18 @@ public class VaccineController {
 	{
 		//add to array list of persistent vaccine records
 		vaxRecordList.add(newRecord);
-		printRecordList();
+		// printRecordList();
 
-		//change view of home after button submitted in table format	
-		viewBundler.getAddData().clearFields();	
+		//change view of home after button submitted in table format
+		viewBundler.getAddData().clearFields();
 	}
-	
+
 	//method to add new record from Parser
 	public void addNewLoadRecord(VaccineRecord newRecord)
 	{
 		//add to array list of persistent vaccine records
 		vaxRecordList.add(newRecord);
-		printRecordList();
+		// printRecordList();
 	}
 
 	//helper function to print out record array list
@@ -46,7 +47,7 @@ public class VaccineController {
 			System.out.println(vaxRecordList.get(i).toString()); //test
 		}
 	}
-	
+
 	//method to save current updated record to file by sending jTable into a .csv format
 	public void saveData(BufferedWriter bufWrite)
 	{
@@ -54,7 +55,7 @@ public class VaccineController {
 		JTable updatedTable = viewBundler.getHome().getJTable();
 
 		try {
-			
+
 			//save column names for first row
 			for (int i = 0; i < updatedTable.getColumnCount(); i++) {
 				if(i != updatedTable.getColumnCount()-1)
@@ -72,7 +73,7 @@ public class VaccineController {
 					if((col != updatedTable.getColumnCount()-1))
 					{
 						bufWrite.write(updatedTable.getValueAt(row, col).toString() + ",");
-					}						
+					}
 					else
 						bufWrite.write(updatedTable.getValueAt(row, col).toString());
 				}
@@ -84,24 +85,22 @@ public class VaccineController {
 		e.printStackTrace();
 		}
 	}
-	
+
 	//method to load record
 	public void LoadData() {
 //		CsvParserSimple parseCSV = new CsvParserSimple();
 	}
-	
+
 	//method to visualize record
 
 	//method to get record list to populate table
 	public ArrayList<VaccineRecord> getRecordList() {
 		return vaxRecordList;
 	}
-	
-<<<<<<< Updated upstream
-=======
+
 	//THIS IS FOR ACCESSING CERTAIN COLUMNS
 	private int locationCount(String location){
-		LinkedList<String> totalLocation = new LinkedList<String>(); 
+		LinkedList<String> totalLocation = new LinkedList<String>();
 		int count;
 		for(int i = 0; i < vaxRecordList.size(); i++){
 			String loc = vaxRecordList.get(i).getLocation();
@@ -109,11 +108,11 @@ public class VaccineController {
 		}
 
 		return getCount(totalLocation, location);
-	 
+
 	}
- 
+
 	private int typeCount(String type){
-	LinkedList<String> totalType = new LinkedList<String>(); 
+	LinkedList<String> totalType = new LinkedList<String>();
 	for(int i = 0; i < vaxRecordList.size(); i++){
 		String loc = vaxRecordList.get(i).getVaxType();
 		totalType.add(loc);
@@ -121,30 +120,30 @@ public class VaccineController {
 
 	return getCount(totalType, type);
 	}
- 
+
 	 /**
-	  * linked list of locations with only one instance 
-	  * @return linked list 
+	  * linked list of locations with only one instance
+	  * @return linked list
 	  * @throws Exception
 	  */
 	 public LinkedList<String> getLocationsInst() throws Exception{
-		LinkedList<String> totalLocation = new LinkedList<String>(); 
-		LinkedList<String> instLocation = new LinkedList<String>(); 
+		LinkedList<String> totalLocation = new LinkedList<String>();
+		LinkedList<String> instLocation = new LinkedList<String>();
 		for(int i = 0; i < vaxRecordList.size(); i++){
 			String loc = vaxRecordList.get(i).getLocation();
 			totalLocation.add(loc);
-			if(!(instLocation.contains(loc))){ //existing locations in file 
+			if(!(instLocation.contains(loc))){ //existing locations in file
 				// System.out.println("one_inst_locations-loop");
-					
+
 				instLocation.add(loc);
 			}
 		}
 
 		return instLocation;
 	 }
-	 
+
 	 public LinkedList<String> getLocationsTotal() throws Exception{
-		LinkedList<String> totalLocation = new LinkedList<String>(); 
+		LinkedList<String> totalLocation = new LinkedList<String>();
 		for(int i = 0; i < vaxRecordList.size(); i++){
 			String loc = vaxRecordList.get(i).getLocation();
 			totalLocation.add(loc);
@@ -152,22 +151,22 @@ public class VaccineController {
 		 //  System.out.println("total_locations");
 		 //  for(int i=0; i<total_locations.size(); i++) {
 		 //      System.out.print(total_locations.get(i));
-		 //   }  
+		 //   }
 		 return totalLocation;
 	 }
-	 
+
 	 /**
-	  * linked list of vaccine type with only one instance 
-	  * @return linked list 
+	  * linked list of vaccine type with only one instance
+	  * @return linked list
 	  * @throws Exception
 	  */
 	public LinkedList<String> getTypeInst() throws Exception{
-		LinkedList<String> totalType = new LinkedList<String>(); 
-		LinkedList<String> instType = new LinkedList<String>(); 
+		LinkedList<String> totalType = new LinkedList<String>();
+		LinkedList<String> instType = new LinkedList<String>();
 		for(int i = 0; i < vaxRecordList.size(); i++){
 			String type = vaxRecordList.get(i).getVaxType();
 			totalType.add(type);
-			if(!(instType.contains(type))){ //existing locations in file 
+			if(!(instType.contains(type))){ //existing locations in file
 				// System.out.println("one_inst_locations-loop");
 				instType.add(type);
 			}
@@ -175,9 +174,9 @@ public class VaccineController {
 
 		return instType;
 	}
-	 
+
 	public LinkedList<String> getTypeTotal() throws Exception{
-		LinkedList<String> totalType = new LinkedList<String>(); 
+		LinkedList<String> totalType = new LinkedList<String>();
 		for(int i = 0; i < vaxRecordList.size(); i++){
 			String type = vaxRecordList.get(i).getVaxType();
 			totalType.add(type);
@@ -185,20 +184,19 @@ public class VaccineController {
 
 		return totalType;
 	}
-	 
+
 	public LinkedList<String> total(LinkedList<String> total){
 		LinkedList<String> totalInstance = new LinkedList<String>();
 		return totalInstance;
 	}
-	
+
 	private int getCount(LinkedList<String> list, String inst) { //totalLocations, String i
 		int count = 0;
 		for(int i = 0; i < list.size(); i++) {
-			if((list.get(i).equals(inst))){ 
+			if((list.get(i).equals(inst))){
 				count++;
 			}
 		}
 		return count;
 	}
->>>>>>> Stashed changes
 }

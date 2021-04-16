@@ -19,17 +19,17 @@ public class VaccineViewBundler
 		saveData = new SaveData();
         addData = new AddData();
         loadData = new LoadData();
+        csv = new CsvParserSimple();
 		visualize = new VisualizeData();
         about = new About();
-        csv = new CsvParserSimple();
 
 		//set view bundlers for eahc of the view panes
         home.setBundler(this);
 		addData.setBundler(this);
 		loadData.setBundler(this);
 		saveData.setBundler(this);
-		visualize.setBundler(this);
 		csv.setBundler(this);
+		visualize.setBundler(this);
 
 		JFrame frame = new JFrame ("Vaccinations");
 		frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
@@ -95,7 +95,7 @@ public class VaccineViewBundler
 	public void setAbout(About about) {
 		this.about = about;
 	}
-	
+
 	public CsvParserSimple getParser() {
 		return csv;
 	}
@@ -103,7 +103,7 @@ public class VaccineViewBundler
 	public void setParser(CsvParserSimple csv) {
 		this.csv = csv;
 	}
-	
+
 	public VaccineController getController() {
 		return this.controller;
 	}
