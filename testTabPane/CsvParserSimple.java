@@ -37,7 +37,9 @@ public class CsvParserSimple {
         for (String[] arrays : result) { //arrays = row. result = file
             // add to records list
             VaccineRecord newRecord = new VaccineRecord(arrays[0], arrays[1], arrays[2], arrays[3], arrays[4], arrays[5]);
-            viewBundler.getController().addNewLoadRecord(newRecord);
+            //checks for any duplicates
+            if(!viewBundler.getController().checkId(arrays[0]))
+                viewBundler.getController().addNewLoadRecord(newRecord);
        }
     }
 
