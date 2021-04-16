@@ -45,7 +45,6 @@ public class VaccineViewBundler
 
 		// set size of frame
 		tabPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
-//		tabPane.setBounds(50,50,200,200);
 		frame.add(tabPane);
 		frame.setSize(800,800);
 		frame.setVisible(true);

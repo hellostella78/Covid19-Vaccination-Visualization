@@ -98,16 +98,13 @@ public class AddData extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			if (e.getSource() == submitButton) {
-				//System.out.println(idField.getText()); //tester
-				
+			if (e.getSource() == submitButton) {				
 				//check id if it exists in 
 				Boolean match = false; Boolean isBlank = false;
 				match = viewBundler.getController().checkId(idField.getText());
 				isBlank = checkBlankFields();
 
 				if(match){
-					System.out.println("found a matching id. Cannot add");
 					errorMessage.setText("ERROR: cannot add due to a matching ID in system.");
 				}
 				else if(isBlank){

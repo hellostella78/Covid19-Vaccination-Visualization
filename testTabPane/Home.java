@@ -85,6 +85,5 @@ public class Home extends JPanel {
 				createTable();
 			}
 		}
-		
 	}
 }

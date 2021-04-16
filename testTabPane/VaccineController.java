@@ -3,8 +3,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-import javax.swing.JFrame;
-import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 
 //Main + Controller
@@ -35,17 +33,6 @@ public class VaccineController {
 	{
 		//add to array list of persistent vaccine records
 		vaxRecordList.add(newRecord);
-		// printRecordList();
-	}
-
-	//helper function to print out record array list
-	public void printRecordList()
-	{
-		System.out.println("---------------Vaccination Record List----------------");
-		for(int i = 0; i < vaxRecordList.size(); i++)
-		{
-			System.out.println(vaxRecordList.get(i).toString()); //test
-		}
 	}
 
 	//method checks if id exists in record list when adding
@@ -64,7 +51,6 @@ public class VaccineController {
 		JTable updatedTable = viewBundler.getHome().getJTable();
 
 		try {
-
 			//save column names for first row
 			for (int i = 0; i < updatedTable.getColumnCount(); i++) {
 				if(i != updatedTable.getColumnCount()-1)
@@ -78,7 +64,7 @@ public class VaccineController {
 			for(int row = 0; row < updatedTable.getRowCount(); row++)
 			{
 				for(int col = 0; col < updatedTable.getColumnCount(); col++)
-				{	//condiiton eliminates last comma
+				{	//condition eliminates last comma
 					if((col != updatedTable.getColumnCount()-1))
 					{
 						bufWrite.write(updatedTable.getValueAt(row, col).toString() + ",");
@@ -90,17 +76,10 @@ public class VaccineController {
 			}
 			bufWrite.close();
 		} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
-
-	//method to load record
-	public void LoadData() {
-//		CsvParserSimple parseCSV = new CsvParserSimple();
-	}
-
-	//method to visualize record
 
 	//method to get record list to populate table
 	public ArrayList<VaccineRecord> getRecordList() {
@@ -142,8 +121,6 @@ public class VaccineController {
 			String loc = vaxRecordList.get(i).getLocation();
 			totalLocation.add(loc);
 			if(!(instLocation.contains(loc))){ //existing locations in file
-				// System.out.println("one_inst_locations-loop");
-
 				instLocation.add(loc);
 			}
 		}
@@ -157,10 +134,6 @@ public class VaccineController {
 			String loc = vaxRecordList.get(i).getLocation();
 			totalLocation.add(loc);
 		}
-		 //  System.out.println("total_locations");
-		 //  for(int i=0; i<total_locations.size(); i++) {
-		 //      System.out.print(total_locations.get(i));
-		 //   }
 		 return totalLocation;
 	 }
 
@@ -176,7 +149,6 @@ public class VaccineController {
 			String type = vaxRecordList.get(i).getVaxType();
 			totalType.add(type);
 			if(!(instType.contains(type))){ //existing locations in file
-				// System.out.println("one_inst_locations-loop");
 				instType.add(type);
 			}
 		}

@@ -1,15 +1,12 @@
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Stream;
-//TESTING VSC
+
 public class CsvParserSimple {
 
 	private VaccineViewBundler viewBundler;
@@ -34,154 +31,14 @@ public class CsvParserSimple {
 
     }
 
-    public File getCSV(){
-        return this.csvFile;
-    }
-
     public void parse(File csvFile) throws Exception {
         this.csvFile = csvFile;
         result = readFile(csvFile, 1);
         for (String[] arrays : result) { //arrays = row. result = file
-            // System.out.println("\nString[" + listIndex++ + "] : " + Arrays.toString(arrays));
-
             // add to records list
             VaccineRecord newRecord = new VaccineRecord(arrays[0], arrays[1], arrays[2], arrays[3], arrays[4], arrays[5]);
             viewBundler.getController().addNewLoadRecord(newRecord);
-
-            int index = 0;
-            for (String item : arrays) {//arrays = row. array = item per column
-            }
-        }
-    }
-
-    private int locationCount(String location){
-       int count = getCount(total_locations, location);
-       return count;
-    }
-
-    private int typeCount(String type){
-        int count = getCount(total_type, type);
-        return count;
-    }
-
-    /**
-     * linked list of locations with only one instance
-     * @return linked list
-     * @throws Exception
-     */
-    public LinkedList<String> getLocationsInst() throws Exception{
-        int listIndex = 0;
-        int locationIndex = 0;
-        int totalLocationIndex = 0;
-        result = readFile(csvFile, 1);
-
-        //2d array: Result contains numerous "arrays"
-        for (String[] arrays : result) { //arrays = row. result = file
-
-           int index = 0;
-            for (String item : arrays) {//arrays = row. array = item per column
-            	if(index == 5) {
-            		if(!(one_inst_locations.contains(item))){ //existing locations in file
-            			one_inst_locations.add(locationIndex, item);
-                		locationIndex++;
-            		}
-            	}
-                index++;
-            }
-        }
-    	return one_inst_locations;
-    }
-
-    public LinkedList<String> getLocationsTotal() throws Exception{
-    	 int listIndex = 0;
-         int locationIndex = 0;
-         int totalLocationIndex = 0;
-         result = readFile(csvFile, 1);
-
-         //2d array: Result contains numerous "arrays"
-         for (String[] arrays : result) { //arrays = row. result = file
-
-            int index = 0;
-             for (String item : arrays) {//arrays = row. array = item per column
-             	if(index == 5) {
-             		total_locations.add(totalLocationIndex, item);
-             		totalLocationIndex++;
-             	}
-                 index++;
-             }
-         }
-    	return total_locations;
-    }
-
-    /**
-     * linked list of vaccine type with only one instance
-     * @return linked list
-     * @throws Exception
-     */
-    public LinkedList<String> getTypeInst() throws Exception{
-    	int listIndex = 0;
-        int typeIndex = 0;
-        int totalTypeIndex = 0;
-        result = readFile(csvFile, 1);
-
-        //2d array: Result contains numerous "arrays"
-        for (String[] arrays : result) { //arrays = row. result = file
-
-            int index = 0;
-	        for (String item : arrays) {//arrays = row. array = item per column
-	        	if(index == 3) {
-	        		if(!(one_inst_type.contains(item))){ //existing locations in file
-	        			one_inst_type.add(typeIndex, item);
-	            		typeIndex++;
-	        		}
-	        	}
-                index++;
-	        }
-        }
-    	return one_inst_type;
-    }
-
-    public LinkedList<String> getTypeTotal() throws Exception{
-    	int listIndex = 0;
-        int typeIndex = 0;
-        int totalTypeIndex = 0;
-        result = readFile(csvFile, 1);
-
-        //2d array: Result contains numerous "arrays"
-        for (String[] arrays : result) { //arrays = row. result = file
-           int index = 0;
-            for (String item : arrays) {//arrays = row. array = item per column
-            	if(index == 3) {
-            		total_type.add(totalTypeIndex, item);
-            		totalTypeIndex++;
-            	}
-                index++;
-            }
-        }
-    	return total_type;
-    }
-
-    /**
-     * checks size of file and number of vaccines distributed total
-     * @return
-     */
-    public int getSize() {
-    	return total_locations.size();
-    }
-
-    public LinkedList<String> total(LinkedList<String> total){
-    	LinkedList<String> totalInstance = new LinkedList<String>();
-    	return totalInstance;
-    }
-
-    private int getCount(LinkedList<String> list, String inst) {
-    	    int count = 0;
-    	    for(int i = 0; i < list.size(); i++) {
-    	    	if((list.get(i).equals(inst))){
-        			count++;
-        		}
-    	    }
-    	    return count;
+       }
     }
 
     /*
