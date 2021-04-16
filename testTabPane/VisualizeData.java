@@ -26,9 +26,9 @@ public class VisualizeData extends JPanel {
         add(vis, BorderLayout.NORTH);
 
         locChart = new PieChart("Vaccine doses by Location (Pie)", new LinkedList<>(), new LinkedList<>());
-        typeChart = new PieChart("Vaccine doses by Type (Pie)", new LinkedList<>(), new LinkedList<>());
+      //  typeChart = new PieChart("Vaccine doses by Type (Pie)", new LinkedList<>(), new LinkedList<>());
 
-        locBar = new BarChart("Vaccine doses by Location (Bar)", new LinkedList<>(), new LinkedList<>());
+       // locBar = new BarChart("Vaccine doses by Location (Bar)", new LinkedList<>(), new LinkedList<>());
         typeBar = new BarChart("Vaccine doses by Type (Bar)",new LinkedList<>(), new LinkedList<>());
 
       //  ex.PieChartbyLocation("pieeee", new LinkedList<>(), new LinkedList<>());
@@ -39,7 +39,7 @@ public class VisualizeData extends JPanel {
         container.add(typeChart.getContentPane());
         container.add(locBar.getContentPane());
         container.add(typeBar.getContentPane());
-        // container.setPreferredSize(new Dimension(750,750));
+        
 
 		scrollPane = new JScrollPane();
         scrollPane.setViewportView(container);
@@ -61,9 +61,9 @@ public class VisualizeData extends JPanel {
         LinkedList<String> instType = viewBundler.getController().getTypeInst();
 
         locChart = new PieChart("Vaccine doses by Location (Pie)", totalLocation, instLocation);
-        typeChart = new PieChart("Vaccine doses by Type (Pie)", totalType, instType);  //INPUT INSTlOCATION AND TOTALLOCATION etc
+      //  typeChart = new PieChart("Vaccine doses by Type (Pie)", totalType, instType);  //INPUT INSTlOCATION AND TOTALLOCATION etc
 
-        locBar = new BarChart("Vaccine doses by Location (Bar)", totalLocation, instLocation);
+      //  locBar = new BarChart("Vaccine doses by Location (Bar)", totalLocation, instLocation);
         typeBar = new BarChart("Vaccine doses by Type (Bar)", totalType, instType);
         //create scroll pane and add table to it.
 		// scrollPane = new JScrollPane(example.getContentPane());
