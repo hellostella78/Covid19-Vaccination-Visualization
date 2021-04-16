@@ -22,10 +22,6 @@ public class CsvParserSimple {
 
     private List<String[]> result;
     private File csvFile;
-    LinkedList<String> one_inst_locations = new LinkedList<String>();
-    LinkedList<String> total_locations = new LinkedList<String>();
-    LinkedList<String> one_inst_type = new LinkedList<String>();
-    LinkedList<String> total_type = new LinkedList<String>();
 
     public CsvParserSimple() {
 
