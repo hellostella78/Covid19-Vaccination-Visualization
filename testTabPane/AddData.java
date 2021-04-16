@@ -10,7 +10,8 @@ public class AddData extends JPanel {
 	private JLabel vaxTypeLabel;
 	private JLabel vaxDateLabel;
 	private JLabel vaxLocationLabel;
-	
+	private JLabel errorMessage;
+
 	private JTextField idField;
 	private JTextField lastNameField;
 	private JTextField firstNameField;
@@ -43,6 +44,10 @@ public class AddData extends JPanel {
 		submitButton = new JButton("Submit");
 		submitButton.addActionListener(new ButtonListener());
 		
+		//error message
+		errorMessage = new JLabel("");
+		errorMessage.setForeground(Color.red);
+
 		// add components to panel
 		add(idLabel);
 		add(idField);
@@ -56,6 +61,7 @@ public class AddData extends JPanel {
 		add(vaxDateField);
 		add(vaxLocationLabel);
 		add(vaxLocationField);
+		add(errorMessage);
 		add(submitButton);
 		
 		setLayout(new GridLayout(7,2));
@@ -76,6 +82,14 @@ public class AddData extends JPanel {
 		vaxDateField.setText("");
 		vaxLocationField.setText("");
 	}
+
+	//method to check for blank fields
+	public Boolean checkBlankFields(){
+		if(idField.getText().equals("") || lastNameField.getText().equals("") || firstNameField.getText().equals("") 
+		|| vaxTypeField.getText().equals("") || vaxDateField.getText().equals("") || vaxLocationField.getText().equals(""))
+			return true;
+		return false;
+	}
 	
 	private class ButtonListener implements ActionListener {
 
@@ -86,8 +100,24 @@ public class AddData extends JPanel {
 			// TODO Auto-generated method stub
 			if (e.getSource() == submitButton) {
 				//System.out.println(idField.getText()); //tester
-				VaccineRecord newRecord = new VaccineRecord(idField.getText(), lastNameField.getText(), firstNameField.getText(), vaxTypeField.getText(), vaxDateField.getText(), vaxLocationField.getText());			
-				viewBundler.getController().addNewRecord(newRecord);
+				
+				//check id if it exists in 
+				Boolean match = false; Boolean isBlank = false;
+				match = viewBundler.getController().checkId(idField.getText());
+				isBlank = checkBlankFields();
+
+				if(match){
+					System.out.println("found a matching id. Cannot add");
+					errorMessage.setText("ERROR: cannot add due to a matching ID in system.");
+				}
+				else if(isBlank){
+					errorMessage.setText("ERROR: please fill all fields before submission.");
+				}
+				else{
+					VaccineRecord newRecord = new VaccineRecord(idField.getText(), lastNameField.getText(), firstNameField.getText(), vaxTypeField.getText(), vaxDateField.getText(), vaxLocationField.getText());			
+					viewBundler.getController().addNewRecord(newRecord);
+					errorMessage.setText("");
+				}
 			}
 		}
 	}

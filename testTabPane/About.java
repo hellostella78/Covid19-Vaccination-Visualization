@@ -1,18 +1,15 @@
+import java.awt.Font;
+
 import javax.swing.*;
 
 public class About extends JPanel {
 
-	private JLabel aboutLabel1, aboutLabel2, aboutLabel3, aboutLabel4;
-	
 	public About() {
-		add(new JLabel("Shaira Alam"));
-	
-		add(new JLabel("Sihyeon Kim"));
-
-		add(new JLabel("Zuy Pham"));
-
-		add(new JLabel("Aira San Agustin"));
-
+		setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
+		
+		JLabel names = new JLabel("<html>Group Members: <br><br>Shaira Alam<br>Sihyeon Kim<br>Zuy Pham<br>Aira San Agustin</html>", SwingConstants.CENTER);
+		names.setFont(new Font("Arial", Font.PLAIN, 20));
+		add(names);
 		
 	}
 }

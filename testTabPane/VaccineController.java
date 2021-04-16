@@ -48,6 +48,15 @@ public class VaccineController {
 		}
 	}
 
+	//method checks if id exists in record list when adding
+	public Boolean checkId(String id)
+	{
+		for(int i = 0; i < vaxRecordList.size(); i++)
+			if(vaxRecordList.get(i).getId().equals(id))
+				return true;
+		return false;
+	}
+
 	//method to save current updated record to file by sending jTable into a .csv format
 	public void saveData(BufferedWriter bufWrite)
 	{
