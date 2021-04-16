@@ -1,7 +1,3 @@
-    private JButton vis;
-    private PieChart example;
-    private JScrollPane scrollPane;
-
 import java.util.LinkedList;
 
 import javax.swing.JButton;
