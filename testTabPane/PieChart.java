@@ -27,12 +27,7 @@ public class PieChart extends JFrame {
     PieDataset dataset = createDataset(total, inst);
 
     // Create chart
-    JFreeChart chart = ChartFactory.createPieChart(
-        title,
-        dataset,
-        true,
-        true,
-        false);
+    JFreeChart chart = ChartFactory.createPieChart(title, dataset, true, true, false);
 
     //Format Label
     PieSectionLabelGenerator labelGenerator = new StandardPieSectionLabelGenerator (
@@ -45,7 +40,6 @@ public class PieChart extends JFrame {
 
 
   }
-
  
   private PieDataset createDataset(LinkedList<String> total, LinkedList<String> inst) {
     DefaultPieDataset dataset = new DefaultPieDataset();
@@ -55,7 +49,6 @@ public class PieChart extends JFrame {
       int count = getCount(total, inst.get(i));
       dataset.setValue(inst.get(i), count);
     }
-
    
     return dataset;
   }
@@ -69,6 +62,5 @@ public class PieChart extends JFrame {
     }
     return count;
   }
-
- 
+  
 }

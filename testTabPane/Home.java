@@ -18,11 +18,6 @@ public class Home extends JPanel {
 	private JTable table;
 
 	public Home() {
-//		if (records != null)
-//			createTable();
-//		updateButton = new JButton("Display Table");
-//		updateButton.addActionListener(new ButtonListener());
-//		add(updateButton, BorderLayout.NORTH);	
 		initTable(0);
 	}
 

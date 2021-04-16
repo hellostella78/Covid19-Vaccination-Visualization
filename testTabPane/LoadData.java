@@ -58,33 +58,7 @@ public class LoadData extends JPanel {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-//					//Model m;
-//					String row = new String();
-//					String[] data = null;
-//					ArrayList<String> list = new ArrayList<String>();
-//					try {
-//						while ((row = csvReader.readLine()) != null) {
-//							data = row.split(",");
-//							// do something with the data
-//							list.addAll(Arrays.asList(data));
-//						}
-//					} catch (IOException e2) {
-//						// TODO Auto-generated catch block
-//						e2.printStackTrace();
-//					}
-//					try {
-//						csvReader.close();
-//					} catch (IOException e1) {
-//						// TODO Auto-generated catch block
-//						e1.printStackTrace();
-//					}
-//
-//					for (String item: list) {
-//						loadLabel.setText(loadLabel.getText() + item);
-//						System.out.println(item);
-//					}
 					try {
-//						CsvParserSimple parse = new CsvParserSimple(csvFile);
 						loaded = true;
 						viewBundler.getParser().parse(csvFile);
 					} catch (Exception e1) {
@@ -92,11 +66,7 @@ public class LoadData extends JPanel {
 						e1.printStackTrace();
 					}
 				}
-				/////
-
 			}
 		}
-
 	}
-
 }
